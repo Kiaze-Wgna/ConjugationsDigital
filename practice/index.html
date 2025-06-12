@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register & Login</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="page-wrapper">
+        <nav class="navbar">
+            <div class="navcontainer">
+                <a href="/" id="navlogo">Conjugations Digital</a>
+                <div class="navtoggle" id="mobile-menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+                <ul class="navmenu">
+                    <li class="navitem">
+                        <a href="/classroom/" class="navlinks">Classroom</a>
+                    </li>
+                    <li class="navitem">
+                        <a href="/practice/" class="navlinks">Practice</a>
+                    </li>
+                    <li class="navitem">
+                        <a href="/profile/" class="navlinks">Profile</a>
+                    </li>
+                    <li class="navbutton">
+                        <a href="/login/" class="signupbutton">Sign Up</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        
+        <!-- Actual Code -->
+        <div class="main-container">
+            <h1 class="practice-title">practice generator</h1>
+            <div class="mode-container" id="indicatifContainer">
+                <button class="select-button" id="indicatifButton"><span>Indicatif</span></button>
+                <div class="tense-container" id="indicatif">
+                    <button class="select-button" id="iPqp"><span>Plus-que-parfait</span></button>
+                    <button class="select-button" id="iPa"><span>Passé antérieur</span></button>
+                    <button class="select-button" id="iI"><span>Imparfait</span></button>
+                    <button class="select-button" id="iPs"><span>Passé simple</span></button>
+                    <button class="select-button" id="iPc"><span>Passé composé</span></button>
+                    <button class="select-button" id="iP"><span>Présent</span></button>
+                    <button class="select-button" id="iFp"><span>Futur proche</span></button>
+                    <button class="select-button" id="iFa"><span>Futur antérieur</span></button>
+                    <button class="select-button" id="iFs"><span>Futur simple</span></button>
+                </div>
+            </div>
+            <div class="mode-container" id="subjonctifContainer">
+                <button class="select-button" id="subjonctifButton"><span>Subjonctif</span></button>
+                <div class="tense-container" id="subjonctif">
+                    <button class="select-button" id="sPqp"><span>Plus-que-parfait</span></button>
+                    <button class="select-button" id="sI"><span>Imparfait</span></button>
+                    <button class="select-button" id="sPa"><span>Passé</span></button>
+                    <button class="select-button" id="sP"><span>Présent</span></button>
+                </div>
+            </div>
+            <div class="mode-container" id="conditionnelContainer">
+                <button class="select-button" id="conditionnelButton"><span>Conditionnel</span></button>
+                <div class="tense-container" id="conditionnel">
+                    <button class="select-button" id="cPa"><span>Passé</span></button>
+                    <button class="select-button" id="cP"><span>Présent</span></button>
+                </div>
+            </div>
+            <div class="mode-container" id="imperatifContainer">
+                <button class="select-button" id="imperatifButton"><span>Impératif</span></button>
+                <div class="tense-container" id="imperatif">
+                    <button class="select-button" id="impPa"><span>Passé</span></button>
+                    <button class="select-button" id="impP"><span>Présent</span></button>
+                </div>
+            </div>
+            <div class="mode-container" id="participeContainer">
+                <button class="select-button" id="participeButton"><span>Participe</span></button>
+                <div class="tense-container" id="participe">
+                    <button class="select-button" id="pPa"><span>Passé</span></button>
+                    <button class="select-button" id="pP"><span>Présent</span></button>
+                </div>
+            </div>
+        </div>     
+
+        <!-- Footer Section -->
+        <div class="footer_container">
+            <div class="footer">
+                <div class="footer-wrap">
+                    <a href="/" class="footer_logo">Conjugations Digital</a>
+                    <a class="website-right">© Conjugations Digital 2025. All rights reserved</a>
+                    <a href="https://www.coursedigital.org/" class="ext-link" target="_blank">Classes</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
