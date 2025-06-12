@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register & Login</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="page-wrapper">
+        <nav class="navbar">
+            <div class="navcontainer">
+                <a href="/" id="navlogo">Conjugations Digital</a>
+                <div class="navtoggle" id="mobile-menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+                <ul class="navmenu">
+                    <li class="navitem">
+                        <a href="/classroom/" class="navlinks">Classroom</a>
+                    </li>
+                    <li class="navitem">
+                        <a href="/practice/" class="navlinks">Practice</a>
+                    </li>
+                    <li class="navitem">
+                        <a href="/profile/" class="navlinks">Profile</a>
+                    </li>
+                    <li class="navbutton">
+                        <a href="/login/" class="signupbutton">Sign Up</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        
+        <!-- Actual Code -->
+        <div class="main-container">
+            <!-- Sign up -->
+            <div class="ls-container" id="signup">
+                <div class="form-info">
+                    <h1 class="form-title">Sign Up</h1>
+                    <p class="form-description">Sign up to Conjugations Digital to record your progress in French Conjugations</p>
+                </div>
+                <form method="post" action="" class="ls-form">
+                    <div class="input-group">
+                        <i></i>
+                        <input class="ls-input" type="email" name="email" id="email" placeholder="Email" required>
+                        <label for="email">Email</label>
+                    </div>
+                    <div class="input-group">
+                        <i></i>
+                        <input class="ls-input" type="password" name="password" id="password" placeholder="Password" required>
+                        <label for="password">Password</label>
+                    </div>
+                    <input type="submit" class="ls-button" value="Sign Up" name="sign_up">
+                </form>
+                <div class="links">
+                    <p>Already have an account?</p>
+                    <button id="loginButton" class="ls-switch">Login</button>
+                </div>
+            </div>
+            <!-- Log In -->
+            <div class="ls-container" id="login" style="display: none;">
+                <div class="form-info">
+                    <h1 class="form-title">Login</h1>
+                    <p class="form-description">To login, enter your email and password below.</p>
+                </div>
+                <form method="post" action="" class="ls-form">
+                    <div class="input-group">
+                        <i></i>
+                        <input class="ls-input" type="email" name="email" id="email" placeholder="Email" required>
+                        <label for="email">Email</label>
+                    </div>
+                    <div class="input-group">
+                        <i></i>
+                        <input class="ls-input" type="password" name="password" id="password" placeholder="Password" required>
+                        <label for="password">Password</label>
+                    </div>
+                    <p class="forgor">
+                        <a href="#">Forgot Password?</a>
+                    </p>
+                    <input type="submit" class="ls-button" value="Login" name="login">
+                </form>
+                <div class="links">
+                    <p>Don't have an account?</p>
+                    <button id="signupButton" class="ls-switch">Sign Up</button>
+                </div>
+            </div>
+        </div>     
+
+        <!-- Footer Section -->
+        <div class="footer_container">
+            <div class="footer">
+                <div class="footer-wrap">
+                    <a href="/" class="footer_logo">Conjugations Digital</a>
+                    <a class="website-right">© Conjugations Digital 2025. All rights reserved</a>
+                    <a href="https://www.coursedigital.org/" class="ext-link" target="_blank">Classes</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
