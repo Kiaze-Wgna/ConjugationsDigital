@@ -291,6 +291,13 @@ label{
     text-decoration: underline;
     color: blue;
 }
+.messageDiv{
+    color: red;
+    margin-bottom: 5px;
+    font-size: 1rem;
+    opacity: 0;
+    animation: fadeOut 7s forwards;
+}
 /* Footer section */
 .footer_container{
     background-color: #141414;
