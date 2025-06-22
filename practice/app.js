@@ -447,9 +447,9 @@ response_submit.addEventListener("click", function(){
         if (screwed){
             showresult(false,"Your current configuration is unavailable!")
         } else if (clean_string(response_text.value)===clean_string(real_ans)){
-            showresult(true,"Correct! The answer is: "+real_ans)
+            showresult(true,"Correct! The answer is most likely: "+real_ans)
         } else{
-            showresult(false,"Incorrect! The answer is: "+real_ans)
+            showresult(false,"Incorrect! The answer is most likely: "+real_ans)
         }
         button_cooldown=true;
     }
