@@ -35,51 +35,74 @@
         
         <!-- Actual Code -->
         <div class="main-container">
-            <h1 class="practice-title">practice generator</h1>
+            <h1 class="practice-title">Practice Generator</h1>
+            <p class="mtv-title">Modes&Tenses</p>
             <div class="mode-container" id="indicatifContainer">
                 <button class="select-button" id="indicatifButton"><span>Indicatif</span></button>
                 <div class="tense-container" id="indicatif">
-                    <button class="select-button" id="iPqp"><span>Plus-que-parfait</span></button>
-                    <button class="select-button" id="iPa"><span>Passé antérieur</span></button>
-                    <button class="select-button" id="iI"><span>Imparfait</span></button>
-                    <button class="select-button" id="iPs"><span>Passé simple</span></button>
-                    <button class="select-button" id="iPc"><span>Passé composé</span></button>
-                    <button class="select-button" id="iP"><span>Présent</span></button>
-                    <button class="select-button" id="iFp"><span>Futur proche</span></button>
-                    <button class="select-button" id="iFa"><span>Futur antérieur</span></button>
-                    <button class="select-button" id="iFs"><span>Futur simple</span></button>
+                    <button class="select-button" id="Plus-que-parfait de l'indicatif"><span>Plus-que-parfait</span></button>
+                    <button class="select-button" id="Passé antérieur de l'indicatif"><span>Passé antérieur</span></button>
+                    <button class="select-button" id="Imparfait de l'indicatif"><span>Imparfait</span></button>
+                    <button class="select-button" id="Passé simple de l'indicatif"><span>Passé simple</span></button>
+                    <button class="select-button" id="Passé composé de l'indicatif"><span>Passé composé</span></button>
+                    <button class="select-button" id="Présent de l'indicatif"><span>Présent</span></button>
+                    <button class="select-button" id="Futur proche de l'indicatif"><span>Futur proche</span></button>
+                    <button class="select-button" id="Futur antérieur de l'indicatif"><span>Futur antérieur</span></button>
+                    <button class="select-button" id="Futur simple de l'indicatif"><span>Futur simple</span></button>
                 </div>
             </div>
             <div class="mode-container" id="subjonctifContainer">
                 <button class="select-button" id="subjonctifButton"><span>Subjonctif</span></button>
                 <div class="tense-container" id="subjonctif">
-                    <button class="select-button" id="sPqp"><span>Plus-que-parfait</span></button>
-                    <button class="select-button" id="sI"><span>Imparfait</span></button>
-                    <button class="select-button" id="sPa"><span>Passé</span></button>
-                    <button class="select-button" id="sP"><span>Présent</span></button>
+                    <button class="select-button" id="Plus-que-parfait du subjonctif"><span>Plus-que-parfait</span></button>
+                    <button class="select-button" id="Imparfait du subjonctif"><span>Imparfait</span></button>
+                    <button class="select-button" id="Passé du subjonctif"><span>Passé</span></button>
+                    <button class="select-button" id="Présent du subjonctif"><span>Présent</span></button>
                 </div>
             </div>
             <div class="mode-container" id="conditionnelContainer">
                 <button class="select-button" id="conditionnelButton"><span>Conditionnel</span></button>
                 <div class="tense-container" id="conditionnel">
-                    <button class="select-button" id="cPa"><span>Passé</span></button>
-                    <button class="select-button" id="cP"><span>Présent</span></button>
+                    <button class="select-button" id="Passé du conditionnel"><span>Passé</span></button>
+                    <button class="select-button" id="Présent du conditionnel"><span>Présent</span></button>
                 </div>
             </div>
             <div class="mode-container" id="imperatifContainer">
                 <button class="select-button" id="imperatifButton"><span>Impératif</span></button>
                 <div class="tense-container" id="imperatif">
-                    <button class="select-button" id="impPa"><span>Passé</span></button>
-                    <button class="select-button" id="impP"><span>Présent</span></button>
+                    <button class="select-button" id="Passé de l'impératif"><span>Passé</span></button>
+                    <button class="select-button" id="Présent de l'impératif"><span>Présent</span></button>
                 </div>
             </div>
             <div class="mode-container" id="participeContainer">
                 <button class="select-button" id="participeButton"><span>Participe</span></button>
                 <div class="tense-container" id="participe">
-                    <button class="select-button" id="pPa"><span>Passé</span></button>
-                    <button class="select-button" id="pP"><span>Présent</span></button>
+                    <button class="select-button" id="Participe passé"><span>Passé</span></button>
+                    <button class="select-button" id="Participe présent"><span>Présent</span></button>
                 </div>
             </div>
+            <p class="mtv-title">Verbs</p>
+            <div class="verb-container">
+                <button class="select-button" id="g1"><span>Groupe 1</span></button>
+                <button class="select-button" id="g2"><span>Groupe 2</span></button>
+                <button class="select-button" id="g3"><span>Groupe 3</span></button>
+            </div>
+            <div class="negation-container" id="negationContainer">
+                <p class="negation-title">Negation</p>
+                <button class="select-button" id="negation"><span>off</span></button>
+            </div>
+            <button class="practice-button" id="beginButton">
+                <span>Start Practicing</span>
+            </button>
+            <button class="practice-button" id="setButton" style="display: none;">
+                <span>Set Verb Tenses</span>
+            </button>
+            <p id="practice-question" class="practice-question-class" style="display: none;">we</p>
+            <input class="practice-response-class" type="text" id="practice-response" placeholder="Conjugate the french verb here..." style="display: none;">
+            <button class="practice-button" id="responseSubmit" style="display: none;">
+                <span>Submit Answer</span>
+            </button>
+            <p id="practice-answer" class="practice-answer-class" style="display: none;"></p>
         </div>     
 
         <!-- Footer Section -->
