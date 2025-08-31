@@ -25,75 +25,88 @@ menu.addEventListener("click",function (){
     menuLinks.classList.toggle("active");
 });
 
+function showcollapseLis(object,object_container){
+    if ((object.style.display==="none")||(object.style.display==="")){
+        object.style.display="flex"
+        object_container.style.flexDirection="row"
+    } else {
+        object.style.display="none"
+        object_container.style.flexDirection="column"
+    }
+}
+
 const indicatifContainer=document.getElementById("indicatifContainer");
 const indicatifButton=document.getElementById("indicatifButton");
 const indicatif=document.getElementById("indicatif");
-indicatifButton.addEventListener("click",function(){
-    if ((indicatif.style.display==="none")||(indicatif.style.display==="")){
-        indicatif.style.display="flex"
-        indicatifContainer.style.flexDirection="row"
-    } else {
-        indicatif.style.display="none"
-        indicatifContainer.style.flexDirection="column"
-    }
-});
+indicatifButton.addEventListener("click",()=>{showcollapseLis(indicatif,indicatifContainer)});
 const subjonctifContainer=document.getElementById("subjonctifContainer");
 const subjonctifButton=document.getElementById("subjonctifButton");
 const subjonctif=document.getElementById("subjonctif");
-subjonctifButton.addEventListener("click",function(){
-    if ((subjonctif.style.display==="none")||(subjonctif.style.display==="")){
-        subjonctif.style.display="flex"
-        subjonctifContainer.style.flexDirection="row"
-    } else {
-        subjonctif.style.display="none"
-        subjonctifContainer.style.flexDirection="column"
-    }
-});
+subjonctifButton.addEventListener("click",()=>{showcollapseLis(subjonctif,subjonctifContainer)});
 const conditionnelContainer=document.getElementById("conditionnelContainer");
 const conditionnelButton=document.getElementById("conditionnelButton");
 const conditionnel=document.getElementById("conditionnel");
-conditionnelButton.addEventListener("click",function(){
-    if ((conditionnel.style.display==="none")||(conditionnel.style.display==="")){
-        conditionnel.style.display="flex"
-        conditionnelContainer.style.flexDirection="row"
-    } else {
-        conditionnel.style.display="none"
-        conditionnelContainer.style.flexDirection="column"
-    }
-});
+conditionnelButton.addEventListener("click",()=>{showcollapseLis(conditionnel,conditionnelContainer)});
 const imperatifContainer=document.getElementById("imperatifContainer");
 const imperatifButton=document.getElementById("imperatifButton");
 const imperatif=document.getElementById("imperatif");
-imperatifButton.addEventListener("click",function(){
-    if ((imperatif.style.display==="none")||(imperatif.style.display==="")){
-        imperatif.style.display="flex"
-        imperatifContainer.style.flexDirection="row"
-    } else {
-        imperatif.style.display="none"
-        imperatifContainer.style.flexDirection="column"
-    }
-});
+imperatifButton.addEventListener("click",()=>{showcollapseLis(imperatif,imperatifContainer)});
 const participeContainer=document.getElementById("participeContainer");
 const participeButton=document.getElementById("participeButton");
 const participe=document.getElementById("participe");
-participeButton.addEventListener("click",function(){
-    if ((participe.style.display==="none")||(participe.style.display==="")){
-        participe.style.display="flex"
-        participeContainer.style.flexDirection="row"
-    } else {
-        participe.style.display="none"
-        participeContainer.style.flexDirection="column"
-    };
-});
+participeButton.addEventListener("click",()=>{showcollapseLis(participe,participeContainer)});
+
+function store_data(index,value){
+    localStorage.setItem(index, JSON.stringify(value))
+}
+function retrieve_data(index,type="[]"){
+    return JSON.parse(localStorage.getItem(index)||type)
+}
+
 //Actual coding part
 const unavailableTenseLis=["Plus-que-parfait de l'indicatif","Passé antérieur de l'indicatif","Imparfait de l'indicatif","Passé simple de l'indicatif","Passé composé de l'indicatif","Futur proche de l'indicatif","Futur antérieur de l'indicatif","Futur simple de l'indicatif","Plus-que-parfait du subjonctif","Imparfait du subjonctif","Passé du subjonctif","Présent du subjonctif","Passé du conditionnel","Présent du conditionnel","Passé de l'impératif","Participe passé","Participe présent"];
 
 var tenseLis=new Array();
+var selectedTenseLis=new Array();
 var verbselectLis=new Array();
 var verbLis=new Array();
 var negation=false;
+
+window.addEventListener("load",function(){
+    tenseLis = retrieve_data("settings");
+    selectedTenseLis = retrieve_data("selectedSettings");
+    console.log(selectedTenseLis)
+    if (tenseLis==null){
+        tenseLis=new Array();
+    }
+    if (selectedTenseLis==null){
+        selectedTenseLis=new Array();
+    } else {
+        selectedTenseLis.forEach(id=>{
+            if (id=="indicatifButton"){
+                showcollapseLis(indicatif,indicatifContainer)
+            } else if(id=="subjonctifButton"){
+                showcollapseLis(subjonctif,subjonctifContainer)
+            } else if(id=="conditionnelButton"){
+                showcollapseLis(conditionnel,conditionnelContainer)
+            } else if(id=="imperatifButton"){
+                showcollapseLis(imperatif,imperatifContainer)
+            } else if(id=="participeButton"){
+                showcollapseLis(participe,participeContainer)
+            }
+            document.getElementById(id).classList.toggle('active');
+        })
+    }
+})
+
 document.querySelectorAll('.select-button').forEach(button => {
     button.addEventListener('click', (event) => {
+        if (selectedTenseLis.includes(event.currentTarget.id)){
+            selectedTenseLis.splice(selectedTenseLis.indexOf(event.currentTarget.id),1);
+        } else{
+            selectedTenseLis.push(event.currentTarget.id);
+        }
+        console.log(selectedTenseLis)
         event.currentTarget.classList.toggle('active');
         if ((event.currentTarget.id==="g1")||(event.currentTarget.id==="g2")||(event.currentTarget.id==="g3")){
             if (verbselectLis.includes(event.currentTarget.id)){
@@ -416,6 +429,8 @@ begin_button.addEventListener("click", function(){
     response_text.style.display="flex";
     response_submit.style.display="flex";
     question_text.innerHTML=generate_question();
+    store_data("settings", tenseLis)
+    store_data("selectedSettings", selectedTenseLis)
 });
 set_button.addEventListener("click", function(){
     screwed=false
