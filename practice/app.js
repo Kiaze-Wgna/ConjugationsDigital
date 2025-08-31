@@ -75,7 +75,6 @@ var negation=false;
 window.addEventListener("load",function(){
     tenseLis = retrieve_data("settings");
     selectedTenseLis = retrieve_data("selectedSettings");
-    console.log(selectedTenseLis)
     if (tenseLis==null){
         tenseLis=new Array();
     }
@@ -106,7 +105,6 @@ document.querySelectorAll('.select-button').forEach(button => {
         } else{
             selectedTenseLis.push(event.currentTarget.id);
         }
-        console.log(selectedTenseLis)
         event.currentTarget.classList.toggle('active');
         if ((event.currentTarget.id==="g1")||(event.currentTarget.id==="g2")||(event.currentTarget.id==="g3")){
             if (verbselectLis.includes(event.currentTarget.id)){
