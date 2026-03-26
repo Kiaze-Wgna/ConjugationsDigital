@@ -76,9 +76,14 @@ var negation=false;
 window.addEventListener("load",function(){
     tenseLis = retrieve_data("settings");
     selectedTenseLis = retrieve_data("selectedSettings");
+    console.log(tenseLis)
+    console.log(selectedTenseLis)
     if (tenseLis==null){
         tenseLis=new Array();
     }
+    document.querySelectorAll('.select-button').forEach(btn => {
+        btn.classList.remove('active');
+    });
     if (selectedTenseLis==null){
         selectedTenseLis=new Array();
     } else {
@@ -94,7 +99,13 @@ window.addEventListener("load",function(){
             } else if(id=="participeButton"){
                 showcollapseLis(participe,participeContainer)
             }
-            document.getElementById(id).classList.toggle('active');
+            if ((id==="g1")||(id==="g2")||(id==="g3")){
+                verbselectLis.push(id);
+            } else if ((id==="negation")){
+                negation=true
+                document.getElementById(id).innerHTML="<span>on</span>"
+            }
+            document.getElementById(id).classList.add('active');
         })
     }
 })
@@ -113,7 +124,7 @@ document.querySelectorAll('.select-button').forEach(button => {
             } else{
                 verbselectLis.push(event.currentTarget.id);
             }
-        } else if ((event.currentTarget.id==="negation")){
+        } else if (event.currentTarget.id==="negation"){
             if (negation){
                 negation=false
                 event.currentTarget.innerHTML="<span>off</span>"
@@ -121,7 +132,7 @@ document.querySelectorAll('.select-button').forEach(button => {
                 negation=true
                 event.currentTarget.innerHTML="<span>on</span>"
             }
-        }else if ((event.currentTarget.id!="indicatifButton")&&(event.currentTarget.id!="subjonctifButton")&&(event.currentTarget.id!="conditionnelButton")&&(event.currentTarget.id!="imperatifButton")&&(event.currentTarget.id!="participeButton")){
+        } else if ((event.currentTarget.id!="indicatifButton")&&(event.currentTarget.id!="subjonctifButton")&&(event.currentTarget.id!="conditionnelButton")&&(event.currentTarget.id!="imperatifButton")&&(event.currentTarget.id!="participeButton")){
             if (tenseLis.includes(event.currentTarget.id)){
                 tenseLis.splice(tenseLis.indexOf(event.currentTarget.id),1);
             } else{
