@@ -17,6 +17,7 @@ const group3prendre=["apprendre","comprendre","entreprendre","prendre","reprendr
 const group3aitre=["apparaître","comparaître","connaître","disparaître","méconnaître","paraître","reconnaître","reparaître","transparaître"]
 const etreverbs = ["aller", "arriver", "descendre", "redescendre", "entrer", "rentrer", "monter", "remonter", "mourir", "naître", "renaître", "partir", "repartir", "passer", "rester", "retourner", "sortir", "ressortir", "tomber", "retomber", "venir", "devenir", "parvenir", "revenir"]
 const passeverbs=["prendre", "apprendre", "comprendre", "construire", "décevoir", "devoir", "pouvoir", "recevoir", "voir", "savoir", "dire", "écrire", "lire", "tenir", "venir", "couvrir", "découvrir", "ouvrir", "atteindre", "peindre", "offrir", "souffrir", "instruire", "produire", "boire", "croire", "connaître", "paraître", "naître", "avoir", "être", "faire", "courir", "vouloir", "mettre", "craindre", "joindre", "suivre", "vivre", "mourir", "acquérir"]
+const auxiliarytenses=["Plus-que-parfait de l'indicatif","Passé antérieur de l'indicatif","Passé composé de l'indicatif","Futur proche de l'indicatif","Futur antérieur de l'indicatif","Plus-que-parfait du subjonctif","Passé du subjonctif","Passé du conditionnel","Passé de l'impératif",];
 
 const menu =document.querySelector("#mobile-menu")
 const menuLinks =document.querySelector(".navmenu")
@@ -64,7 +65,7 @@ function retrieve_data(index,type="[]"){
 }
 
 //Actual coding part
-const unavailableTenseLis=["Plus-que-parfait de l'indicatif","Passé antérieur de l'indicatif","Imparfait de l'indicatif","Passé simple de l'indicatif","Passé composé de l'indicatif","Futur proche de l'indicatif","Futur antérieur de l'indicatif","Futur simple de l'indicatif","Plus-que-parfait du subjonctif","Imparfait du subjonctif","Passé du subjonctif","Présent du subjonctif","Passé du conditionnel","Présent du conditionnel","Passé de l'impératif","Participe passé","Participe présent"];
+const unavailableTenseLis=["Plus-que-parfait de l'indicatif","Passé antérieur de l'indicatif","Imparfait de l'indicatif","Passé simple de l'indicatif","Futur proche de l'indicatif","Futur antérieur de l'indicatif","Futur simple de l'indicatif","Plus-que-parfait du subjonctif","Imparfait du subjonctif","Passé du subjonctif","Présent du subjonctif","Passé du conditionnel","Présent du conditionnel","Passé de l'impératif","Participe passé","Participe présent"];
 
 var tenseLis=new Array();
 var selectedTenseLis=new Array();
@@ -136,6 +137,52 @@ document.querySelectorAll('.select-button').forEach(button => {
 function chooseList(lis){
     return lis[Math.floor(Math.random()*lis.length)]
 }
+function gimme_participe_passé(verb){
+    const exceptiondic={"prendre": "pris","apprendre": "appris","comprendre": "compris","conduire": "conduit","construire": "construit","décevoir": "déçu","devoir": "dû","pouvoir": "pu","recevoir": "reçu","voir": "vu","savoir": "su","dire": "dit","écrire": "écrit","lire": "lu","tenir": "tenu","venir": "venu","couvrir": "couvert","découvrir": "découvert","ouvrir": "ouvert","atteindre": "atteint","peindre": "peint","offrir": "offert","souffrir": "souffert","instruire": "instruit","produire": "produit","boire": "bu","croire": "cru","connaître": "connu","paraître": "paru","naître": "né","avoir": "eu","être": "été","faire": "fait","courir": "couru","vouloir": "voulu","mettre": "mis","craindre": "craint","joindre": "joint","suivre": "suivi","vivre": "vécu","mourir": "mort","acquérir": "acquis"}
+    if (verb in exceptiondic) {
+        return exceptiondic[verb];
+    }
+    if (group1.includes(verb)) {
+        return verb.slice(0, -2) + "é";
+    }
+    if (group2.includes(verb)) {
+        return verb.slice(0, -2) + "i";
+    }
+    if (group3dre.includes(verb)) {
+        return verb.slice(0, -3) + "u";
+    }
+    if (group3mir.includes(verb)) {
+        return verb.slice(0, -2) + "i";
+    }
+    if (group3vrir.includes(verb)) {
+        return verb.slice(0, -2) + "ert";
+    }
+    if (group3enir.includes(verb)) {
+        return verb.slice(0, -2) + "u";
+    }
+    if (group3rompre.includes(verb)) {
+        return verb.slice(0, -3) + "pu";
+    }
+    if (group3uire.includes(verb)) {
+        return verb.slice(0, -3) + "it";
+    }
+    if (group3crire.includes(verb)) {
+        return verb.slice(0, -3) + "it";
+    }
+    if (group3aindre.includes(verb)) {
+        return verb.slice(0, -5) + "aint";
+    }
+    if (group3ttre.includes(verb)) {
+        return verb.slice(0, -4) + "is";
+    }
+    if (group3prendre.includes(verb)) {
+        return verb.slice(0, -5) + "is";
+    }
+    if (group3aitre.includes(verb)) {
+        return verb.slice(0, -5) + "u";
+    }
+    return verb;
+}
 var tense="";
 var subject="";
 var verb="";
@@ -174,9 +221,49 @@ function generate_question(){
 }
 function generate_answer(){
     var ending=""
+    var auxVerb=""
+    var participe=""
     var root_offset=0
     //endings
-    if ((tense==="Présent de l'indicatif")||(tense==="Présent de l'impératif")){
+    if (tense==="Passé composé de l'indicatif") {
+        participe=gimme_participe_passé(verb)
+        if (etreverbs.includes(verb)) {
+            if (subject==="Elle"){
+                participe=participe+"e"
+            } else if ((subject==="Nous")||(subject==="Vous")||(subject==="Ils")){
+                participe=participe+"s"
+            } else if (subject==="Elles"){
+                participe=participe+"es"
+            }
+            if (subject==="Je"){
+                auxVerb="suis"
+            } else if (subject==="Tu"){
+                auxVerb="es"
+            } else if ((subject==="Il")||(subject==="Elle")||(subject==="On")){
+                auxVerb="est"
+            } else if (subject==="Nous"){
+                auxVerb="sommes"
+            } else if (subject==="Vous"){
+                auxVerb="êtes"
+            } else if ((subject==="Ils")||(subject==="Elles")){
+                auxVerb="sont"
+            }
+        } else {
+            if (subject==="Je"){
+                auxVerb="ai"
+            } else if (subject==="Tu"){
+                auxVerb="as"
+            } else if ((subject==="Il")||(subject==="Elle")||(subject==="On")){
+                auxVerb="a"
+            } else if (subject==="Nous"){
+                auxVerb="avons"
+            } else if (subject==="Vous"){
+                auxVerb="avez"
+            } else if ((subject==="Ils")||(subject==="Elles")){
+                auxVerb="ont"
+            }
+        }
+    } else if ((tense==="Présent de l'indicatif")||(tense==="Présent de l'impératif")){
         if ((group1.includes(verb))||(group3vrir.includes(verb))) {
             if ((subject==="Je")||(subject==="Il")||(subject==="Elle")||(subject==="On")){
                 ending="e"
@@ -352,23 +439,44 @@ function generate_answer(){
         }
     }
     //final assembly
-    if (vowels.includes(verb.charAt(0))){
-        if (neg===""){
-            if (subject==="Je"){
-                return subject.slice(0,-1)+"'"+verb.slice(0,-2-root_offset)+ending
-            } else{
-                return subject+" "+verb.slice(0,-2-root_offset)+ending
+    if (auxiliarytenses.includes(tense)){
+        if (vowels.includes(auxVerb.charAt(0))){
+            if (neg===""){
+                if (subject==="Je"){
+                    return subject.slice(0,-1)+"'"+auxVerb+" "+participe
+                } else{
+                    return subject+" "+auxVerb+" "+participe
+                }
+            }else{
+                return subject+" n'"+auxVerb+" "+neg.slice(7,-1)+" "+participe
             }
-        }else{
-            return subject+" n'"+verb.slice(0,-2-root_offset)+ending+" "+neg.slice(7,-1)
+        } else{
+            if (neg===""){
+                return subject+" "+auxVerb+" "+participe
+            }else{
+                return subject+" ne "+auxVerb+" "+neg.slice(7,-1)+" "+participe
+            }
         }
-    } else{
-        if (neg===""){
-            return subject+" "+verb.slice(0,-2-root_offset)+ending
-        }else{
-            return subject+" ne "+verb.slice(0,-2-root_offset)+ending+" "+neg.slice(7,-1)
+    } else {
+        if (vowels.includes(verb.charAt(0))){
+            if (neg===""){
+                if (subject==="Je"){
+                    return subject.slice(0,-1)+"'"+verb.slice(0,-2-root_offset)+ending
+                } else{
+                    return subject+" "+verb.slice(0,-2-root_offset)+ending
+                }
+            }else{
+                return subject+" n'"+verb.slice(0,-2-root_offset)+ending+" "+neg.slice(7,-1)
+            }
+        } else{
+            if (neg===""){
+                return subject+" "+verb.slice(0,-2-root_offset)+ending
+            }else{
+                return subject+" ne "+verb.slice(0,-2-root_offset)+ending+" "+neg.slice(7,-1)
+            }
         }
     }
+    
 }
 var button_cooldown=false;
 const negationContainer=document.getElementById("negationContainer");
